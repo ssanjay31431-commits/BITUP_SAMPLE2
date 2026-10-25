@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Clock, Users, Utensils, Phone, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Clock, Users, Utensils, Phone, ArrowRight } from 'lucide-react';
 
-export default function QuickOrderBar({ onSelectCategory }) {
-  const [orderType, setOrderType] = useState('takeaway');
-  const [prepTime, setPrepTime] = useState('15 mins');
+export default function QuickOrderBar() {
+  const [orderType, setOrderType] = useState('Takeaway');
+  const [prepTime, setPrepTime] = useState('Ready in 15 mins');
   const [partySize, setPartySize] = useState('2');
-  const [isCopied, setIsCopied] = useState(false);
 
   const handleAction = () => {
     const text = `Hi BITE UP! I want to arrange an express ${orderType} order for ${partySize} people, ready in approx ${prepTime}. Please share your fastest kitchen options!`;
@@ -14,21 +13,21 @@ export default function QuickOrderBar({ onSelectCategory }) {
   };
 
   return (
-    <div className="relative z-20 -mt-8 sm:-mt-12 max-w-5xl mx-auto px-4 sm:px-6">
-      <div className="bg-[#FAF6F0] border-2 border-[#E5DDD0] rounded-[2rem] p-4 sm:p-6 shadow-warm-xl">
+    <div className="relative z-20 mt-4 sm:-mt-12 max-w-5xl mx-auto px-4 sm:px-6">
+      <div className="bg-[#FAF6F0] border-2 border-[#E5DDD0] rounded-2xl sm:rounded-[2rem] p-4 sm:p-6 shadow-warm-xl">
         
         {/* Top Header Row */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-[#EAE0D2] gap-2">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 sm:pb-4 mb-3 sm:mb-4 border-b border-[#EAE0D2] gap-1 sm:gap-2">
           <div>
-            <h3 className="font-serif text-lg sm:text-xl font-bold text-espresso">
+            <h3 className="font-serif text-base sm:text-xl font-bold text-espresso">
               Express Takeout & Kitchen Station
             </h3>
-            <p className="text-xs text-[#7A6E60]">
+            <p className="text-[11px] sm:text-xs text-[#7A6E60]">
               Hot, fresh food ready when you arrive. We prep upon your order.
             </p>
           </div>
-          <div className="flex items-center gap-2 text-xs">
-            <span className="text-[#8A7D6E]">Prefer direct call?</span>
+          <div className="flex items-center gap-1.5 text-[11px] sm:text-xs pt-1 sm:pt-0">
+            <span className="text-[#8A7D6E]">Prefer calling?</span>
             <a
               href="tel:+917200748268"
               className="font-bold text-brand-red hover:underline flex items-center gap-1"
@@ -40,11 +39,11 @@ export default function QuickOrderBar({ onSelectCategory }) {
         </div>
 
         {/* Interactive Selector Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 items-center">
           
           {/* Order Mode */}
-          <div className="bg-[#F3ECE0] rounded-2xl p-3 border border-[#E5DDD0]">
-            <label className="text-[11px] font-bold uppercase tracking-wider text-[#7A6E60] block mb-1">
+          <div className="bg-[#F3ECE0] rounded-xl sm:rounded-2xl p-2.5 sm:p-3 border border-[#E5DDD0]">
+            <label className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#7A6E60] block mb-1">
               Order Type
             </label>
             <div className="flex items-center gap-2">
@@ -52,7 +51,7 @@ export default function QuickOrderBar({ onSelectCategory }) {
               <select
                 value={orderType}
                 onChange={(e) => setOrderType(e.target.value)}
-                className="w-full bg-transparent text-sm font-bold text-espresso focus:outline-none cursor-pointer"
+                className="w-full bg-transparent text-sm sm:text-xs font-bold text-espresso focus:outline-none cursor-pointer"
               >
                 <option value="Takeaway">Express Takeaway</option>
                 <option value="Dine-In">Dine-In Table</option>
@@ -62,8 +61,8 @@ export default function QuickOrderBar({ onSelectCategory }) {
           </div>
 
           {/* Time */}
-          <div className="bg-[#F3ECE0] rounded-2xl p-3 border border-[#E5DDD0]">
-            <label className="text-[11px] font-bold uppercase tracking-wider text-[#7A6E60] block mb-1">
+          <div className="bg-[#F3ECE0] rounded-xl sm:rounded-2xl p-2.5 sm:p-3 border border-[#E5DDD0]">
+            <label className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#7A6E60] block mb-1">
               Target Pickup
             </label>
             <div className="flex items-center gap-2">
@@ -71,7 +70,7 @@ export default function QuickOrderBar({ onSelectCategory }) {
               <select
                 value={prepTime}
                 onChange={(e) => setPrepTime(e.target.value)}
-                className="w-full bg-transparent text-sm font-bold text-espresso focus:outline-none cursor-pointer"
+                className="w-full bg-transparent text-sm sm:text-xs font-bold text-espresso focus:outline-none cursor-pointer"
               >
                 <option value="Ready in 15 mins">Ready in 15 mins</option>
                 <option value="Ready in 30 mins">Ready in 30 mins</option>
@@ -82,8 +81,8 @@ export default function QuickOrderBar({ onSelectCategory }) {
           </div>
 
           {/* Servings */}
-          <div className="bg-[#F3ECE0] rounded-2xl p-3 border border-[#E5DDD0]">
-            <label className="text-[11px] font-bold uppercase tracking-wider text-[#7A6E60] block mb-1">
+          <div className="bg-[#F3ECE0] rounded-xl sm:rounded-2xl p-2.5 sm:p-3 border border-[#E5DDD0]">
+            <label className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#7A6E60] block mb-1">
               Party Size
             </label>
             <div className="flex items-center gap-2">
@@ -91,9 +90,9 @@ export default function QuickOrderBar({ onSelectCategory }) {
               <select
                 value={partySize}
                 onChange={(e) => setPartySize(e.target.value)}
-                className="w-full bg-transparent text-sm font-bold text-espresso focus:outline-none cursor-pointer"
+                className="w-full bg-transparent text-sm sm:text-xs font-bold text-espresso focus:outline-none cursor-pointer"
               >
-                <option value="1">1 Person (Solo Craving)</option>
+                <option value="1">1 Person (Solo Meal)</option>
                 <option value="2">2 People (Duo Meal)</option>
                 <option value="3-4">3 - 4 People (Bucket Feast)</option>
                 <option value="5+">5+ People (Party Box)</option>
@@ -105,9 +104,9 @@ export default function QuickOrderBar({ onSelectCategory }) {
           <div>
             <button
               onClick={handleAction}
-              className="w-full bg-espresso hover:bg-brand-red text-white py-3.5 px-5 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 shadow-warm transition-all duration-300 hover:scale-[1.02] active:scale-95 group"
+              className="w-full bg-espresso hover:bg-brand-red text-white py-3 sm:py-3.5 px-4 rounded-xl sm:rounded-2xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-warm transition-all duration-300 hover:scale-[1.02] active:scale-95 group"
             >
-              <span>Instant Express Pre-order</span>
+              <span>Instant WhatsApp Order</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>

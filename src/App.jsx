@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ShoppingBag, ArrowRight } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import QuickOrderBar from './components/QuickOrderBar';
@@ -98,9 +99,10 @@ export default function App() {
   };
 
   const cartTotalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const cartSubtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-cream-100 font-sans text-espresso flex flex-col">
+    <div className="min-h-screen bg-cream-100 font-sans text-espresso flex flex-col overflow-x-hidden">
       {/* Navbar */}
       <Navbar
         cartCount={cartTotalItems}
@@ -152,6 +154,28 @@ export default function App() {
 
       {/* 10. Editorial Footer */}
       <Footer />
+
+      {/* Floating Mobile Cart Tray Pill (Appears at bottom on mobile when tray has items) */}
+      {cartTotalItems > 0 && !isCartOpen && (
+        <div className="fixed bottom-4 left-4 right-4 z-40 sm:hidden">
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="w-full bg-espresso hover:bg-brand-red text-white py-3 px-5 rounded-full shadow-warm-xl flex items-center justify-between border border-[#3E342B] active:scale-95 transition-all"
+            aria-label="Open tray"
+          >
+            <div className="flex items-center gap-2.5">
+              <span className="w-6 h-6 rounded-full bg-brand-red text-white text-xs font-black flex items-center justify-center">
+                {cartTotalItems}
+              </span>
+              <span className="text-xs font-bold uppercase tracking-wider">View Tray</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-sm text-brand-gold-light">₹{cartSubtotal}</span>
+              <ArrowRight className="w-4 h-4" />
+            </div>
+          </button>
+        </div>
+      )}
 
       {/* Slide-over Cart Drawer */}
       <CartDrawer
